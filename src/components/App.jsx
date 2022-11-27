@@ -33,6 +33,13 @@ handleAddBadFeedback = () => {
   })
 }
 
+countTotalFeedback = () => {
+  return this.state.good + this.state.neutral + this.state.bad;
+}
+
+percentageGoodFeedback = () => {
+  return 100*this.state.good/this.countTotalFeedback();
+}
 
 render () {
   return (
@@ -44,13 +51,21 @@ render () {
   <button type="button" onClick={this.handleAddBadFeedback}>Bad</button>
 </div>
     </Section>
-    <Section>
+    {
+      this.countTotalFeedback() > 0 ?
+      <Section title = "Statistics">
       <div>
         <p>Good: {this.state.good}</p>
         <p>Neutral: {this.state.neutral}</p>
         <p>Bad: {this.state.bad}</p>
       </div>
-    </Section>
+      <div>
+        <p>Total: {this.countTotalFeedback()}</p>
+        <p>Positive Feedback: {this.countTotalFeedback === 0 ?  "100" : Math.round(this.percentageGoodFeedback())}%</p>
+      </div>
+    </Section> :
+    <h1>There is no feedback</h1>
+    }
     </>
   )
 }
