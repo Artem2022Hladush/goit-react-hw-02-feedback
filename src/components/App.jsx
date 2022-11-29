@@ -11,12 +11,12 @@ state = {
   bad: 0,
 };
 
-handleAddFeedback = () => {
-  this.setState(prevState => {
-    return {
-      good: prevState.good + 1,
+handleAddFeedback = (el) => {
+  this.setState((prevState)=>(
+    {
+      [el]:prevState[el]+1
     }
-  })
+  ))
 }
 
 

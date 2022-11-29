@@ -1,0 +1,32 @@
+.button{
+	width: 100px;
+	height: 70px;
+	background-color: aqua;
+	border: 5px solid rgb(127, 165, 255);
+	font-size: 25px;
+	}
+	.button:not(:last-child){
+	margin-right: 20px;
+	}
+	.buttons__list{
+		display: flex;
+		justify-content: center;
+	}
+	.icon{
+		margin-right: 10px;
+	}
+	.button:hover{
+	border:5px solid 
+	}
+	.button:nth-child(1):hover{
+		color: chartreuse;
+		border-color: chartreuse;
+	}
+	.button:nth-child(2):hover{
+		color: rgb(185, 185, 133);
+		border-color: rgb(200, 205, 60)een;
+	}
+	.button:nth-child(3):hover{
+		color: red;
+		border-color: red;
+	}
