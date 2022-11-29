@@ -1,6 +1,8 @@
 
 import React, { Component } from "react"
 import Section from "./Section/Section";
+import Notification from "./Notification/Notification";
+import FeedbackButton from "./FeedbackButton/FeedbackButton";
 
 class App extends Component {
 state = {
@@ -9,7 +11,7 @@ state = {
   bad: 0,
 };
 
-handleAddGoodFeedback = () => {
+handleAddFeedback = () => {
   this.setState(prevState => {
     return {
       good: prevState.good + 1,
@@ -17,21 +19,6 @@ handleAddGoodFeedback = () => {
   })
 }
 
-handleAddNeutralFeedback = () => {
-  this.setState(prevState => {
-    return {
-      neutral: prevState.neutral + 1,
-    }
-  })
-}
-
-handleAddBadFeedback = () => {
-  this.setState(prevState => {
-    return {
-      bad: prevState.bad + 1,
-    }
-  })
-}
 
 countTotalFeedback = () => {
   return this.state.good + this.state.neutral + this.state.bad;
@@ -45,11 +32,7 @@ render () {
   return (
     <>
     <Section title = "Plese Leave Feeedback">
-<div>
-  <button type="button"  onClick={this.handleAddGoodFeedback}>Good</button>
-  <button type="button" onClick={this.handleAddNeutralFeedback}>Neutral</button>
-  <button type="button" onClick={this.handleAddBadFeedback}>Bad</button>
-</div>
+        <FeedbackButton options={Object.keys(this.state)} onAddFeedback={this.handleAddFeedback}></FeedbackButton>
     </Section>
     {
       this.countTotalFeedback() > 0 ?
@@ -64,7 +47,7 @@ render () {
         <p>Positive Feedback: {this.countTotalFeedback === 0 ?  "100" : Math.round(this.percentageGoodFeedback())}%</p>
       </div>
     </Section> :
-    <h1>There is no feedback</h1>
+    <Notification message="There is no feedback"/>
     }
     </>
   )

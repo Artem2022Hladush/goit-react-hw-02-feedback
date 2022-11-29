@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import css from "../Section/Section.module.css"
-// import { MdInsertEmoticon, TbMoodNeutral, MdMoodBad} from 'react-icons/fa';
+
 
 const Section = ({title, children}) => {
 return (
