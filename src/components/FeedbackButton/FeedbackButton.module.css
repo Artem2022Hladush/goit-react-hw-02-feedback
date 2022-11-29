@@ -16,7 +16,7 @@
 		margin-right: 10px;
 	}
 	.button:hover{
-	border:5px solid 
+	border:5px solid navy;
 	}
 	.button:nth-child(1):hover{
 		color: chartreuse;
