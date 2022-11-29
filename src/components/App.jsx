@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import Section from "./Section/Section";
 import Notification from "./Notification/Notification";
 import FeedbackButton from "./FeedbackButton/FeedbackButton";
+import Statistics from "./Statistics/Statistics";
 
 class App extends Component {
 state = {
@@ -37,15 +38,7 @@ render () {
     {
       this.countTotalFeedback() > 0 ?
       <Section title = "Statistics">
-      <div>
-        <p>Good: {this.state.good}</p>
-        <p>Neutral: {this.state.neutral}</p>
-        <p>Bad: {this.state.bad}</p>
-      </div>
-      <div>
-        <p>Total: {this.countTotalFeedback()}</p>
-        <p>Positive Feedback: {this.countTotalFeedback === 0 ?  "100" : Math.round(this.percentageGoodFeedback())}%</p>
-      </div>
+        <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.countTotalFeedback()} positivePercentage={this.percentageGoodFeedback()}></Statistics>
     </Section> :
     <Notification message="There is no feedback"/>
     }
